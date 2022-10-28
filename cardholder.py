@@ -1,6 +1,4 @@
-#class that creates a card holder/user
- 
-#create class
+ #create class
 class cardHolder:
     #constructor that initiates the required fields
     def __init__(self,cardNum,pin,fName,lName,balance):
