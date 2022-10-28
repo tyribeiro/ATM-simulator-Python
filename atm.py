@@ -22,8 +22,11 @@ def deposit(cardHolder):
 
         # modify balance by using getter and setter methods, print confirmation and new balance
         cardHolder.set_balance(cardHolder.get_balance() + deposit)
+
         print("Deposit Successful! Your new balance is: $", str(cardHolder.get_balance()))
+        print()
     except:
+        print
         print("Invalid Input!")
 
 
@@ -36,22 +39,24 @@ def withdraw(cardHolder):
 
         # validate if user is attempting to withdraw more than they have in balance
         if (cardHolder.get_balance() < withdraw):
+            print()
             print("Insufficient balance!")
+            print()
         else:
             cardHolder.set_balance(cardHolder.get_balance() - withdraw)
-            print("Withdraw Successful!")
-
-        # modify balance by using getter and setter methods, print confirmation and new balance
-        cardHolder.set_balance(cardHolder.get_balance() - withdraw)
-        print("Withdrawal Successful! Your new balance is: $", str(cardHolder.get_balance()))
+                    # modify balance by using getter and setter methods, print confirmation and new balance
+            print()
+            print("Withdrawal Successful! Your new balance is: $", str(cardHolder.get_balance()))
+            print()
     except:
         print("Invalid Input!")
+        print()
 
 
 # check balance method
 def check_balance(cardHolder):
     print("Current Balance: $", cardHolder.get_balance())
-
+    print()
 
 # main method
 if __name__ == '__main__':
@@ -62,12 +67,11 @@ if __name__ == '__main__':
     list_of_cardholders = []
 
     # create cardholders
-    list_of_cardholders.append(cardHolder("1234567890123456", "1234", "John", "Smith", "234.87"))
-    list_of_cardholders.append(cardHolder("1357902468022343", "1245", "Thais", "Ribeiro", "324.12"))
-    list_of_cardholders.append(cardHolder("6758766525241456", "1357", "Ally", "Johnson", "102.17"))
-    list_of_cardholders.append(cardHolder("1284765564524434", "2468", "David", "Goliath", "67.88"))
-    list_of_cardholders.append(cardHolder("1111111111111111", "0000", "Amanda", "Cook", "123.45"))
-
+    list_of_cardholders.append(cardHolder("1234567890123456", 1234, "John", "Smith", 234.87))
+    list_of_cardholders.append(cardHolder("1357902468022343", 1235, "Thais", "Ribeiro", 324.12))
+    list_of_cardholders.append(cardHolder("6758766525241456", 1357, "Ally", "Johnson", 102.17))
+    list_of_cardholders.append(cardHolder("1284765564524434", 2468, "David", "Goliath", 67.88))
+    
     # prompt users
     debitCardNumber = ""
 
@@ -75,7 +79,8 @@ if __name__ == '__main__':
     # get debit card number from user, validate that its in the database
     while True:
         try:
-            debitCardNumber = input("Enter debit card number: ")
+            debitCardNumber = str(input("Enter debit card number: "))
+            print()
 
             # iterate through cardholders and check if user exists
             debitMatch = [holder for holder in list_of_cardholders if holder.cardNum == debitCardNumber.strip()]
@@ -86,8 +91,10 @@ if __name__ == '__main__':
                 break
             else:
                 print("Card Number Invalid. Try again.")
+                print()
         except:
             print("Card Number Invalid. Try again.")
+            print()
 
 # prompt for pin
 # user validation loop
@@ -96,15 +103,18 @@ if __name__ == '__main__':
 # check if pin matches debit card that user entered
 while True:
     try:
-        userPin = int(input("Enter PIN: ").strip())
+        userPin = str(input("Enter PIN: ").strip())
         if (current_user.get_pin() == userPin):
             break
         else:
             print("Invalid PIN. Try Again.")
+            print()
     except:
         print("Invalid PIN. Try again.")
+        print()
 
 # print options for user after validating them
+print()
 print("Welcome, ", current_user.get_fName(), "!")
 option = 0
 
@@ -116,15 +126,21 @@ while (True):
         option = int(input())
     except:
         print("Invalid Input. Try again.")
+        print()
+
 
     if (option == 1):
+        print()
         deposit(current_user)
     elif (option == 2):
+        print()
         withdraw(current_user)
     elif (option == 3):
+        print()
         check_balance(current_user)
     elif (option == 4):
         break
     else:
         option = 0
+print()
 print("Thank you! Bye Bye!")
