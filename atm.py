@@ -100,6 +100,32 @@ if __name__ == '__main__':
             if(current_user.get_pin() == userPin):
                 break
             else:
-                print("Wrong pin. Try again.")
+                print("Wrong PIN. Try again.")
         except:
             print("Invalid PIN. Try again.")
+
+#print options for user after validating them
+print("Welcome, ", current_user.get.fName(), "!")
+option = 0
+
+#run loop while user didnt choose to exit (option 4 from menu)
+while (True):
+    print_menu()
+    #validate option
+    try:
+        option = int(input())
+    except:
+        print("Invalid Input. Try again.")
+
+    if(option == 1):
+        deposit(current_user)
+    elif(option == 2):
+        withdraw(current_user)
+    elif(option == 3):
+        check_balance(current_user)
+    elif(option == 4):
+        break
+    else:
+        option = 0
+print("Thank you! Bye Bye!")
+
