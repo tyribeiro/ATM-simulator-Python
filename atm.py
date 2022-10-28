@@ -10,8 +10,6 @@ def print_menu():
     print("3. Check Balance")
     print("4. Exit")
 
-    deposit(current_user)
-
 
 # methods
 
@@ -20,7 +18,7 @@ def deposit(cardHolder):
     # validate user input, check if its a valid number
     try:
         # float to handle decimals
-        deposit = float(input("Enter amount to deposit: "))
+        deposit = input("Enter amount to deposit: ")
 
         # modify balance by using getter and setter methods, print confirmation and new balance
         cardHolder.set_balance(cardHolder.get_balance() + deposit)
