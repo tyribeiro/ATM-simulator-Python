@@ -18,7 +18,7 @@ class cardHolder:
     def get_lName(self):
         return self.lName;
     def get_balance(self):
-        return self.balance;        
+        return float(self.balance);        
    
     #setters
     def set_cardNum(self,newValue):
@@ -30,7 +30,7 @@ class cardHolder:
     def set_lName(self,newValue):
         self.lName = newValue;
     def set_balance(self,newValue):
-        self.balance = newValue;
+        self.balance = float(newValue);
  
     #print out cardholder information
     def print_out(self):
