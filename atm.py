@@ -54,4 +54,52 @@ def check_balance(cardHolder):
     print("Current Balance: $", cardHolder.get_balance())
  
  
+#main method
+if __name__ == '__main__':
+    #instantiate new cardholder
+    current_user = cardHolder("","","","","")
+ 
+    #create cardholders database
+    list_of_cardholders = []
+    
+    #create cardholders
+    list_of_cardholders.append(cardHolder("1234567890123456","1234","John","Smith","234.87"))
+    list_of_cardholders.append(cardHolder("1357902468022343","1245","Thais","Ribeiro","324.12"))
+    list_of_cardholders.append(cardHolder("6758766525241456","1357","Ally","Johnson","102.17"))
+    list_of_cardholders.append(cardHolder("1284765564524434","2468","David","Goliath","67.88"))
+    list_of_cardholders.append(cardHolder("1111111111111111","0000","Amanda","Cook","123.45"))
 
+    #prompt users
+    debitCardNumber = ""
+
+    #user validation loop
+    #get debit card number from user, validate that its in the database
+    while True:
+        try:
+            debitCardNumber = input("Enter debit card number: ")
+
+            #iterate through cardholders and check if user exists
+            debitMatch = [holder for holder in list_of_cardholders if holder.cardNum == debitCardNumber]
+
+            if(len(debitMatch) > 0):
+                current_user = debitMatch[0]
+                break
+            else:
+                print("Card Number Invalid. Try again.")
+        except:
+            print("Card Number Invalid. Try again.")
+
+    #prompt for pin
+    #user validation loop
+    while True:    
+        try:
+            #strip to take out extra spaces
+            userPin = int(input("Enter your pin: ").strip())
+
+            #check if pin matches debit card that user entered
+            if(current_user.get_pin() == userPin):
+                break
+            else:
+                print("Wrong pin. Try again.")
+        except:
+            print("Invalid PIN. Try again.")
